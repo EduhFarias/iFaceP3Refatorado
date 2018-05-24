@@ -11,25 +11,19 @@ public class FriendshipRequest {
         this.requestedTo = to;
     }
 
-
     public void enviarPedido(Principal.Person user, ArrayList<Principal.Person> users)
     {
         Scanner input = new Scanner(System.in);
         System.out.println("Digite o nome para quem sera o pedido de amizade");
         String name = input.nextLine();
-        int i;
-        for (i = 0; i < users.size(); i++)
-        {
-            if(users.get(i).getName().equals(name))
-            {
+
+        for (int i = 0; i < users.size(); i++) {
+            if(users.get(i).getName().equals(name)) {
                 FriendshipRequest pedido = new FriendshipRequest(user, users.get(i));
                 users.get(i).getFriendships().addRequest(pedido);
+                return;
             }
-        }
-        if(i == 0)
-        {
-            System.out.printf("Nao foi possivel enviar um pedido de amizade, pois nao existe usuario cadastrado com o nome de %s", name);
-        }
+        } System.out.printf("Nao foi possivel enviar um pedido de amizade, pois nao existe usuario cadastrado com o nome de %s", name);
     }
 
     public Principal.Person getRequestedBy()
